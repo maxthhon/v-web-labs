@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css">
+    <title>app</title>
+  </head>
+  <body>
+
+<header>
+  <nav>
+    <h1>Магазин</h1>
+      <input type="text" id="search" placeholder="Поиск товаров...">
+  </nav>
+</header>
+
+<main>
+  <section class="products">
+    <article class="product-card" data-name="Кроссовки">
+      <img src="images/cross.png" alt="Кроссовки" class="product-image">
+      <div class="product-header">
+        <h3 id="product-name">Кроссовки</h3>
+        <span id="price">1500р</span>
+      </div>
+      <button class="add-to-cart">Добавить в корзину</button>
+    </article>
+    <article class="product-card" data-name="Джинсы">
+      <img src="images/dzhins.png" alt="Джинсы" class="product-image">
+      <div class="product-header">
+        <h3 id="product-name">Джинсы</h3>
+        <span id="price">3400р</span>
+      </div>
+      <button class="add-to-cart">Добавить в корзину</button>
+    </article>
+    <article class="product-card" data-name="Худи">
+      <img src="images/hoodie.png" alt="Худи" class="product-image">
+      <div class="product-header">
+        <h3 id="product-name">Худи</h3>
+        <span id="price">1900р</span>
+      </div>
+      <button class="add-to-cart">Добавить в корзину</button>
+    </article>
+  </section>
+</main>
+
+<footer>
+  <p id="copyright">© 2025 магазин</p>
+</footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

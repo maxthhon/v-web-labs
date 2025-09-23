@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  font-family: "Courier New", monospace; /* ретро-шрифт */
+  background: #fdf6e3; /* теплый кремовый фон */
+  color: #3b2e2e; /* коричневый текст */
+}
+
+header {
+  background: #c97d60; /* терракотовый */
+  color: #fff8dc; /* теплый кремовый */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+footer {
+  background: #c97d60; /* тот же терракотовый */
+  color: #fff8dc;
+  text-align: center;
+  padding: 0rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  font-size: 0.8rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input {
+  padding: 0.5rem;
+  border: 2px solid #b5895c; /* песочный */
+  border-radius: 15px;
+  background: #fff8dc; /* светлый крем */
+  color: #3b2e2e;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 220px);
+  gap: 2rem;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  justify-content: start;
+}
+
+.product-card {
+  border: 2px solid #a0522d; /* ретро-коричневый */
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  background: #fff8dc; /* светлый ретро фон */
+  width: 200px;
+  height: 280px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0rem;
+
+  box-shadow: 0 6px 6px rgba(139, 69, 19, 0.3); /* мягкая ретро тень */
+}
+
+.product-card:hover {
+  box-shadow: 0 10px 15px rgba(139, 69, 19, 0.4);
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}
+
+.product-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: #b5895c 1px solid; /* песочный бордер */
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #d2691e; /* ретро-оранжевый */
+  color: #fff8dc;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #a0522d; /* коричневый */
+}
+
+button.in-cart {
+  background: #6b8e23; /* оливковый зеленый */
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+#search {
+  width: 80%;
+  max-width: 300px;
+  min-width: none;
+  transition: all 0.1s ease;
+}
+
+#search:focus {
+  outline: none;
+  border-color: #d2691e; /* ретро-оранжевый при фокусе */
+  box-shadow: 0 0 5px rgba(210, 105, 30, 0.5);
+  transition: all 0.3s ease;
+}
+
+#search::placeholder {
+  color: #3b2e2e;
+  opacity: 0.7;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between; /* название слева, цена справа */
+  align-items: center;
+  width: 100%;
+  /* border: #3b2e2e 1px solid; */
+  padding: 0 0.5rem 0.5rem;
+}
+
+#product-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#price {
+  margin: 0;
+  font-size: 1rem;
+  color: #a0522d; /* ретро-цвет для цены */
+  font-weight: bold;
+}
