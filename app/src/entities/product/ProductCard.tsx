@@ -1,38 +1,59 @@
-import { Button } from '../../shared/ui/Button';
-import { useCartStore } from '../../features/cartStore';
-import type { TProduct } from './types';
+import { Heart } from 'lucide-react';
+import { useStore } from '../../app/store/hooks';
+import type { TProduct } from '../../app/store/types';
 
 type TProductCardProps = {
 	product: TProduct;
 };
 
 export const ProductCard = ({ product }: TProductCardProps) => {
-	const { id, name, price, image } = product;
+	const { id, name, price, oldPrice, image } = product;
 
-	const addToCart = useCartStore((state) => state.addToCart);
-	// Тут используем селектор сразу
-	const isAdded = useCartStore((state) => state.isInCart(id));
+	const addToCart = useStore((state) => state.addToCart);
+	const toggleFavorite = useStore((state) => state.toggleFavorite);
+	
+	const isFavorite = useStore((state) => state.favorites.includes(id));
+	const isInCart = useStore((state) => state.cart.some((item) => item.productId === id));
 
 	return (
-		<article className='
-      flex h-[280px] w-[200px] flex-col items-center justify-between rounded-[10px] 
-      border-2 border-[#a0522d] bg-[#fff8dc] p-4 text-center shadow-[0_6px_6px_rgba(139,69,19,0.3)]
-      transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_10px_15px_rgba(139,69,19,0.4)]
-    '>
-			<img
-				src={image}
-				alt={name}
-				className='mb-2 h-[200px] w-[200px] rounded-lg border border-[#b5895c] object-cover'
-			/>
+		<article className='group relative flex flex-col rounded-lg border border-gray-200 bg-white p-3 transition-shadow hover:shadow-lg'>
+			{/* Иконка избранного */}
+			<button 
+				onClick={() => toggleFavorite(id)}
+				className='absolute right-3 top-3 z-10 text-gray-400 hover:text-red-500'
+			>
+				<Heart size={20} fill={isFavorite ? 'currentColor' : 'none'} className={isFavorite ? 'text-red-500' : ''} />
+			</button>
 
-			<div className='flex w-full items-center justify-between pb-2'>
-				<h3 className='m-0 text-base font-bold'>{name}</h3>
-				<span className='m-0 text-base font-bold text-[#a0522d]'>{price}р</span>
+			{/* Картинка */}
+			<div className='mb-3 flex h-[200px] items-center justify-center overflow-hidden rounded-md bg-gray-50'>
+				<img src={image} alt={name} className='h-full w-full object-contain mix-blend-multiply' />
 			</div>
 
-			<Button onClick={() => addToCart(id)} disabled={isAdded}>
-				{isAdded ? 'В корзине' : 'Добавить в корзину'}
-			</Button>
+			{/* Контент */}
+			<div className='flex flex-grow flex-col'>
+				<div className='mb-2'>
+					<div className='flex items-baseline gap-2'>
+						<span className='font-bold text-lg'>{price} ₽</span>
+						{oldPrice && (
+							<span className='text-sm text-gray-400 line-through'>{oldPrice} ₽</span>
+						)}
+					</div>
+					<h3 className='text-sm text-gray-700 line-clamp-2'>{name}</h3>
+				</div>
+
+				{/* Кнопка на всю ширину */}
+				<button
+					onClick={() => addToCart(id)}
+					className={`mt-auto w-full rounded-md py-2 text-sm font-medium transition-colors 
+						${isInCart 
+							? 'bg-gray-200 text-gray-800' 
+							: 'bg-black text-white hover:bg-gray-800'
+						}`}
+				>
+					{isInCart ? 'В корзине' : 'В корзину'}
+				</button>
+			</div>
 		</article>
 	);
 };
