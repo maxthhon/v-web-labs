@@ -1,18 +1,23 @@
 @import "tailwindcss";
 
-/* Настраиваем твои цвета как тему (опционально, но удобно для переноса) */
 @theme {
-  --color-retro-bg: #fdf6e3;
-  --color-retro-text: #3b2e2e;
-  --color-retro-primary: #c97d60;
-  --color-retro-secondary: #fff8dc;
-  --color-retro-accent: #d2691e;
-  --color-retro-border: #b5895c;
+
+  --font-retro: "Courier New", monospace;
+  
+  --color-bg: #fdf6e3;
+  --color-text: #3b2e2e;
+  --color-primary: #c97d60;
+  --color-secondary: #fff8dc;
+  --color-accent: #d2691e;
+  --color-accent-hover: #a0522d;
+  --color-border: #b5895c;
+  --color-success: #6b8e23;
 }
 
 body {
-  background-color: var(--color-retro-bg);
-  color: var(--color-retro-text);
-  font-family: "Courier New", monospace;
   margin: 0;
+  font-family: var(--font-retro);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
 }
