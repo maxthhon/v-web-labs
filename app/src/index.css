@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* Настраиваем твои цвета как тему (опционально, но удобно для переноса) */
+@theme {
+  --color-retro-bg: #fdf6e3;
+  --color-retro-text: #3b2e2e;
+  --color-retro-primary: #c97d60;
+  --color-retro-secondary: #fff8dc;
+  --color-retro-accent: #d2691e;
+  --color-retro-border: #b5895c;
+}
+
+body {
+  background-color: var(--color-retro-bg);
+  color: var(--color-retro-text);
+  font-family: "Courier New", monospace;
+  margin: 0;
+}
